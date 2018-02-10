@@ -73,5 +73,5 @@ clear
 echo "\033[37;41mSua Mineraçao Foi Iniciada  .. Abrindo sessao em 3segundos\033[01;0m \n"
 echo "\033[37;41m COMANDO [screen -x zpool] \033[0m"
 sleep 3
-sudo screen -dmS zpool minerd -a yescrypt -o stratum+tcp://198.50.224.190:6233 -t $core -R 15 -q
+sudo screen -dmS zpool minerd -a yescrypt -o stratum+tcp://165.227.188.150:6233 -t $core -R 15 -q
 sleep 1
