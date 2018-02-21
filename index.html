@@ -1,0 +1,269 @@
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Testador PEDRO VIADO</title>
+<style>
+body {
+    font-family: 'Comic Sans MS'; font-size:12px;color:#FFFFF;  }
+    hr {border:inset 1px #E5E5E5}
+
+#form-container
+    {   color:#FFFFF;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size:13px;
+        background-color: #131313;
+        border: solid 1px #FFFFF;
+        border-radius:10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        box-shadow: 0px 0px 15px #FFFFF;
+        -moz-box-shadow: 0px 0px 15px #FFFFF;
+        -webkit-box-shadow: 0px 0px 15px #FFFFF;
+        margin:30px auto;
+        padding:10px;
+        width:680px;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+
+
+
+
+    input[type=text], textarea
+    {
+        background-color:#1a1a1a;
+        border:solid 1px #00FFFF; color:#FFFFF;
+        border-radius:5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+    }
+    textarea { width:100%;height:200px; resize:none }
+    input[type=text] { width:160px;text-align:center }
+    input[type=text]:focus, textarea:focus { background-color:#1a1a1a; border:solid 1px white; color:#FFFFFF; }
+    .submit-button
+    {
+        background: #FFD777;
+        border:solid 1px #FFD777;
+        border-radius:5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+        -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        position: relative;
+        color:#FFF;
+        display: inline-block;
+        cursor:pointer;
+        font-size:13px;
+        padding:3px 8px;
+    }
+
+    .business{
+        color:yellow;
+        font-weight: bold;
+    }
+    .premier{
+        color:#00FF00;
+        font-weight: bold;
+    }
+    .verified{
+        color:#800080;
+        font-weight: bold;
+    }
+    .style2{text-align: center ;font-weight: bold;font-family: 'Comic Sans '  ;color: #00FFFF;text-shadow: 0px 0px 60px #00FFFF ;font-size: 50px}
+
+    .nolog{
+        font-size: 10px;
+        font: red;
+    }
+</style>
+</head>
+<body style=background:#1a1a1a>
+<div id="form-container"><div align="center" class="style2">Checker de CANADIAN</div><strong><center><font color=#00FFFF>Testando:  (Canadian)</font></strong>
+<form name="data" method="post">
+        <center><textarea name="lista" required="required" id="lista" class="textarea" rows="8" placeholder="4505539480039281|05|2022|653" title="4505539480039281|05|2022|653" style="width: 600px;"></textarea></center>
+            <br>
+<input type="button" class="btn btn-info btn-md" style="width: 600px;" id="startc" value="TESTAR" onclick="startParams()">
+            
+<br><br>
+                        
+    <i id="demo"><font color="Cyan">STATUS : </font> Aguardando...</i>  |  <font color="Cyan">  TOTAL : </font><i id="testado" style="color:Azure;"> 0 </i>  |  <font color="Cyan">  CARREGADAS : </font><i id="carregada" style="color:Azure ;"> 0 </i>  |  <font color="Cyan">  APROVADAS : </font> <i id="CLIVE" style="color:lime;"> 0 </i>  |  <font color="Cyan">  REPROVADAS : </font>   <i id="CDIE" style="color:red;"> 0 </i><br>
+<br>
+            
+       <font color="black">EM FILA : </font> <i id="nCheckTM" style="color:black;"> N/A </i><br>
+         
+       <br>
+      <font color="black"> PROGRESSO : </font> <i id="progress_total" style="color:red;"> N/A </i>  |  <font color="black"> VER </font><font color="lime"> APROVADAS </font> <input type="Checkbox" onclick="cvcl()" id="VCL">  |  <font color="black"> VER </font><font color="red"> REPROVADAS </font> <input type="Checkbox" onclick="cvcd()" id="VCD">
+                        
+            
+        <div id="pgstr"></div>
+            <br>
+                
+                
+                <br>
+          
+          
+                  
+<span style="color: lime;">[ APROVADAS ] </span>
+                      <br><br>
+                            <i id="nLive" style="display:none;"></i><div id="emLIVE" style="display:none;">
+                                      <div id="ALLLIVE" onclick="SelectAll('ALLLIVE');"></div></div><br>
+                    
+<span style="color: red;">[ REPROVADAS ]</span>
+                       <br><br>
+                            <i id="nDie" style="display:none;"></i><div id="emDIE" style="display:none;">
+                                      <div id="ALLDIE" onclick="SelectAll('ALLDIE');"></div></div><br>
+                     
+         
+          
+            
+            <script type="text/javascript">
+                var cdie = document.getElementById('VCD');
+                var clive = document.getElementById('VCL');
+                
+                // Functions
+                function SelectAll(id)
+                {
+                    document.getElementById(id).focus();
+                    document.getElementById(id).select();
+                }
+                
+                function cvcd(){
+                    if(cdie.checked == false){
+                        document.getElementById("emDIE").style.display = "none";
+                        document.getElementById("nDie").style.display = "none";
+                    } else if(cdie.checked == true){
+                        document.getElementById("emDIE").style.display = "block";
+                        document.getElementById("nDie").style.display = "block";
+                    } 
+                }
+                function cvcl(){
+                    if(clive.checked == false){
+                        document.getElementById("emLIVE").style.display = "none";
+                        document.getElementById("nLive").style.display = "none";
+                    } else if(clive.checked == true){
+                        document.getElementById("emLIVE").style.display = "block";
+                        document.getElementById("nLive").style.display = "block";
+                    } 
+                }
+                function startchk(url, chard, pchk){
+                    
+                    var xmlhttp;
+                    if (window.XMLHttpRequest)
+                    {
+                        xmlhttp=new XMLHttpRequest();
+                    }
+                    else
+                    {
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange=function()
+                    {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                            var xdata = xmlhttp.responseText;
+                            var totaltestado = document.getElementById("testado");
+                            var naosei = totaltestado.innerHTML = (eval(totaltestado.innerHTML) + 1);
+                            var naosesi = (eval(document.getElementById("testado").innerHTML) + 1);
+                            var countlive = (eval(document.getElementById("CLIVE").innerHTML) + 1);
+                            var countlixo = (eval(document.getElementById("CDIE").innerHTML) + 1);
+                            var resultado = Math.floor((naosei / chard) * 100);
+                            var boaporcento = Math.floor((countlive / chard) * 100);
+                            var lixoporcento = Math.floor((countlixo / chard) * 100);
+                            document.getElementById("nCheckTM").innerHTML = "<font color='black'>" +  url + "</font>";
+                            document.getElementById("progress_total").innerHTML = "<font style='color: red;'>" + resultado + "%</font>";
+                            document.title = "[Progresso: " + resultado + "%" + "]";
+                            if (xdata.match(/Live/g)) {    
+                                document.getElementById("CLIVE").innerHTML = countlive;
+                                document.getElementById("ALLLIVE").innerHTML = document.getElementById("ALLLIVE").innerHTML +  xdata + " \n";
+                             //   document.getElementById("progressbarTOTAL").style.width = boaporcento + "%";
+                           //     document.getElementById("progressbarTOTAL").innerHTML = boaporcento + "%";
+                                notifyMe();
+                                
+                            } else if (xdata.match(/Die/g)) {
+                                document.getElementById("CDIE").innerHTML = countlixo;
+                                document.getElementById("ALLDIE").innerHTML = document.getElementById("ALLDIE").innerHTML + xdata + "\n";
+                            //    document.getElementById("progressbarTOTAL").style.width = lixoporcento + "%";
+                              //  document.getElementById("progressbarTOTAL").innerHTML = lixoporcento + "%";
+                                
+                            }
+                        }
+                    }
+                    xmlhttp.open("GET","api.php?lista=" + url + "" ,true);
+                    xmlhttp.send();
+                }
+                
+                function listToArray(fullString, separator) {
+                    var fullArray = [];
+                    
+                    if (fullString !== undefined) {
+                        if (fullString.indexOf(separator) == -1) {
+                            fullAray.push(fullString);
+                        } else {
+                            fullArray = fullString.split(separator);
+                        }
+                    }
+                    
+                    return fullArray;
+                }
+                function count(mixed_var, mode) {
+                    var key, cnt = 0;
+                    if (mixed_var === null || typeof mixed_var === 'undefined') {
+                        return 0;
+                    } else if (mixed_var.constructor !== Array && mixed_var.constructor !== Object) {
+                        return 1;
+                    }
+                    if (mode === 'COUNT_RECURSIVE') {
+                        mode = 1;
+                    }
+                    if (mode != 1) {
+                        mode = 0;
+                    }
+                    for (key in mixed_var) {
+                        if (mixed_var.hasOwnProperty(key)) {
+                            cnt++;
+                            if (mode == 1 && mixed_var[key] && (mixed_var[key].constructor === Array || mixed_var[key].constructor ===
+                                                                Object)) {
+                                cnt += this.count(mixed_var[key], 1);
+                            }
+                        }
+                    }
+                    return cnt;
+                }
+                function pushcsB(c,p) {
+                    document.getElementById(p).innerHTML = document.getElementById(p).innerHTML + c + "\n<br>" ;
+                }
+                function startParams() {
+                    document.getElementById("pgstr").style.display = "block";
+                    var textarea = document.getElementById("lista").value;
+                    // var textareacount = textarea.split("\n");
+                    var textareacount = textarea.split('\n');
+                    var textareaMatch = count(textareacount, 'COUNT_RECURSIVE');
+                    //Check
+                    var myString = textarea;
+                    var myArray = listToArray(myString, '\n');
+                   
+                    document.getElementById("demo").innerHTML = '';
+                    document.getElementById("carregada").innerHTML = textareaMatch;   
+                    for(var i=0;i<textareaMatch;i++){
+                        
+                        var cclst = myArray[i];
+                        var cemail = cclst.split("|");
+                        var csids = 'csid_' + i;
+                        var ccids = 'ccid_' + i;
+                        
+                        var output = document.getElementById("lista").value;
+                        output = output.replace(cclst, "");
+                        output = output.replace("\n", "");
+                        document.getElementById("lista").innerHTML = output;
+                        startchk(cclst, textareaMatch, i);
+                        
+                    }
+                    document.getElementById("demo").innerHTML = '<font color="black">STATUS : </font></i><i style="color:lime;"> INICIADO!   </i>';
+                }
+            </script>
+        </center>
+    
+</body></html>
